@@ -1,0 +1,28 @@
+replace spaces in a string with %20, returning a string with the spaces replaced
+input will always be a string, output will always be a string
+string can hold any character
+2 solutions, one with, one without recursion
+
+input "i am a string"
+edge cases: 
+"i have other char%acters 5939dj%%%"
+"  i start with spaces  "
+
+outputs:
+"i%20am%20a%20string"
+"i%20have%20other%20char%acters%205939dj%%%" "%20%20i%20start%20with%20spaces%20%20"
+
+const urlMaker = (string) => {
+  return string.split(" ").join("%20");
+}
+
+const urlRecursion = (string) => {
+  if (string.length === 0) {
+    return "";
+  } else if (string[0] === " ") {
+    return "%20" + urlRecursion(string.substring(1));
+  } else {
+    return string[0] + urlRecursion(string.substring(1));
+  }
+}
+
